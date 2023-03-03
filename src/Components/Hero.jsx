@@ -3,7 +3,6 @@ import { Container } from "@mui/system";
 import React from "react";
 import Navbar from "./Navbar";
 import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined';
-import heroImg from "../media/hero_illustration.png";
 import CustomButton from "./CustomButton";
 import { createTheme } from '@mui/material/styles';
 

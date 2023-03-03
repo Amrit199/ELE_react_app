@@ -1,4 +1,3 @@
-import { Box } from "@material-ui/core";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
 import axios from "axios";
@@ -11,11 +10,11 @@ import heroImg from "../media/news.jpg";
 const Listed = () => {
   const [data, setData] = useState([]);
   const [hasMore, setHasMore] = useState(true);
-
+  
   const fetchMoreData = () => {
     axios
       .get(
-        "https://newsapi.org/v2/everything?q=norway+electricity&apiKey=9932a81d52f24e0a941e532102c02251"
+        "https://newsapi.org/v2/everything?q=norway+electricity&sortBy=popularity&apiKey=9932a81d52f24e0a941e532102c02251"
       )
       .then((response) => {
         const sortedData = response.data.articles.sort(
@@ -33,30 +32,36 @@ const Listed = () => {
     img: `${heroImg}`,
     heading: "Stay Informed with the Latest Energy News",
     title: "Energy News",
-    description: "Stay up to date with the latest news and developments in the world of energy.",
-  }
+    description:
+      "Stay up to date with the latest news and developments in the world of energy.",
+  };
   console.log(data);
-  console.log(heroImg)
+  console.log(heroImg);
   return (
     <div>
-      <Hero data={heroData}/>
-    <Container sx={{ mt: 5 }}>
-      <InfiniteScroll
-        dataLength={data.length}
-        next={fetchMoreData}
-        hasMore={hasMore}
-        loader={<h4>Loading ...</h4>}
-      >
-        <Grid container spacing={5}>
-          {data &&
-            data.map((item, index) => (
-              <Grid item xs="auto" key={index}>
-                <BlogsCard key={item.id} data={item} />
-              </Grid>
-            ))}
-        </Grid>
-      </InfiniteScroll>
-    </Container>
+      <Hero data={heroData} />
+      <Container sx={{ paddingY: 5 }}>
+        <InfiniteScroll
+          dataLength={data.length}
+          next={fetchMoreData}
+          hasMore={hasMore}
+          loader={<h4>Loading ...</h4>}
+        >
+          <Grid
+            container
+            padding="10px"
+            spacing={5}
+            justifyContent="space-around"
+          >
+            {data &&
+              data.map((item, index) => (
+                <Grid item xs="auto" key={index}>
+                  <BlogsCard key={item.id} data={item} />
+                </Grid>
+              ))}
+          </Grid>
+        </InfiniteScroll>
+      </Container>
     </div>
   );
 };

@@ -95,7 +95,7 @@ const Faq = () => {
               direction="column"
               alignItems="center"
               justifyContent="center"
-              style={{ minHeight: '100vh' }}
+              style={{ minHeight: '50vh' }}
             >
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{mt: '10px'}}>
               <AccordionSummary id='panel1-header' aria-controls='panel1-content'>
