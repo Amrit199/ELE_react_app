@@ -44,7 +44,6 @@ const Hero = ( {data} ) => {
       },
     },
   });
-  console.log(data)
   return (
     <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "80vh", }} >
       <Container>

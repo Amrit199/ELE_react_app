@@ -6,10 +6,10 @@ import heroImg from "../media/features.jpg";
 const Features = () => {
   const heroData = {
     img: `${heroImg}`,
-    heading: "FAQ",
-    title: "Frequently Asked Question",
+    heading: "Our Key Features",
+    title: "Experience The Power of our Innovative Features",
     description:
-      "Get answers to common questions about our products, services and policies.",
+      "Discover the many benefits of our feature-rich platform.",
   };
   return (
     <div>

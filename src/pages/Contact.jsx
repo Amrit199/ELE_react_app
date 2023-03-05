@@ -5,10 +5,10 @@ import heroImg from "../media/contact.jpg";
 const Contact = () => {
   const heroData = {
     img: `${heroImg}`,
-    heading: "FAQ",
-    title: "Frequently Asked Question",
+    heading: "Get In Touch",
+    title: "Contact Us",
     description:
-      "Get answers to common questions about our products, services and policies.",
+      "Have a question or a comment? We'd love to hear from you.",
   };
   return (
     <div>
