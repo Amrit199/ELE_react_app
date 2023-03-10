@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import { DataAuth } from "../context/DataProvider";
 import moment from "moment/moment";
+import { Link } from "@mui/material";
 
 const useStyles = makeStyles({
     root: {
@@ -32,6 +33,9 @@ const News = () => {
   const classes = useStyles()
 
   const date = moment(leto.publishedAt).utc().format("DD-MM-YYYY");
+  const parser = new DOMParser()
+  const htmlDoc = parser.parseFromString(leto.content, "text/html")
+  const content = htmlDoc.documentElement.textContent
   console.log(leto);
   return (
     <Card className={classes.root}>
@@ -53,8 +57,9 @@ const News = () => {
           {leto.description}
         </Typography>
         <Typography variant="body1" component="p">
-          {leto.content}
+          {content}
         </Typography>
+        <Link href={leto.url}>read more</Link>
       </CardContent>
     </Card>
   )

@@ -7,9 +7,6 @@ import { DataAuth } from "../context/DataProvider";
 
 const useStyles = makeStyles({
   root: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
     width: 300,
     height: "100%",
     boxShadow: "gray 2px 2px 2px 2px",
@@ -19,14 +16,14 @@ const useStyles = makeStyles({
   },
   heades: {
     display: "flex",
-    justifyContent: "space-between"
+    gap: "1.5rem",
   },
   items: {
     padding: "10px",
     display: "flex",
     flexDirection: "column",
     gap: "5px",
-    height: "15rem"
+    // height: "15rem"
   }
 });
 
@@ -35,9 +32,9 @@ const BlogsCard = ({ data }) => {
   const { setLeto } = DataAuth()
   const navigate = useNavigate()
   
-  let date = moment(data.publishedAt).utc().format("DD-MM-YYYY");
-  let longTitle= data.title.split(" ")
-  let shortTitle = longTitle.slice(0,9).join(" ")
+  let date = moment(data.publishedAt).utc().format("DD-MMM-YYYY");
+  // let longTitle= data.title.split(" ")
+  // let shortTitle = longTitle.slice(0,11).join(" ")
   // let longDesc = data.description.split(" ")
   // let shortDescription = longDesc.slice(0,12).join(" ")
 
@@ -53,20 +50,21 @@ const BlogsCard = ({ data }) => {
         <CardMedia className={classes.media} image={data.urlToImage}/>
         <CardContent className={classes.items}>
           <CardContent className={classes.heades}>
-          <Typography variant="body1" component="p">
+          <Typography variant="body2" component="p">
             Date: {date}
           </Typography>
-          <Typography variant="body1" component="p">
+          <Typography variant="body2" component="p">
             Source: {data.source.name}
           </Typography>
           </CardContent>
           <Typography variant="h6" component="h2">
-            {shortTitle}
+            {/* {shortTitle} */}
+            {data.title}
           </Typography>
           {/* <Typography variant="body1" component="p">
             {shortDescription} ....
           </Typography> */}
-          <Typography variant="body1" component="p" color="primary">
+          <Typography variant="body2" component="p" color="primary">
             Author: {data.author}
           </Typography>
         </CardContent>
