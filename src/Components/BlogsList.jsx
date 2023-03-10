@@ -29,7 +29,7 @@ const BlogsList = () => {
   useEffect(() => {
     axios
       .get(
-        "https://newsapi.org/v2/everything?q=electricity&sortBy=publishedAt&apiKey=9932a81d52f24e0a941e532102c02251"
+        `https://newsapi.org/v2/everything?q=electricity&sortBy=publishedAt&apiKey=${process.env.REACT_APP_api_KEY}`
       )
       .then((response) => {
         setData(response.data.articles);

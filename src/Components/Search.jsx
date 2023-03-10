@@ -46,13 +46,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
-    width: "auto",
-    // [theme.breakpoints.up("sm")]: {
-    //   width: "100%",
-    //   "&:focus": {
-    //     width: "100%",
-    //   },
-    // },
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "100%",
+      "&:focus": {
+        width: "100%",
+      },
+    },
   },
 }));
 
