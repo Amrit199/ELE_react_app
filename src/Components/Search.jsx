@@ -1,9 +1,4 @@
 import React, { useState } from "react";
-// import Box from "@mui/material/Box";
-// import TextField from "@mui/material/TextField";
-// import Autocomplete from "@mui/material/Autocomplete";
-// import { countries } from "../data";
-// import { Box, Input } from "@mui/material";
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
@@ -20,11 +15,7 @@ const Searchtext = styled("div")(({ theme }) => ({
   width: "100%",
   border: "2px gray solid",
   [theme.breakpoints.up("sm")]: {
-    // theme.spacing(1)
-    // marginLeft: "auto",
-    // marginRight: "auto",
-    margin: "1rem auto",
-    
+    margin: "1rem auto",   
     width: "50%",
   },
 }));
@@ -64,8 +55,6 @@ const Search = ({ searchTopic }) => {
     // searchCountry(country);
     searchTopic(topic);
   };
-
-  console.log(topic);
   return (
     <div>
         <Typography variant="h4" textAlign="center" marginY={10}>Search for News Topics</Typography>

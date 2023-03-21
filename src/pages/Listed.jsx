@@ -1,11 +1,13 @@
+import { ElectricBolt } from "@mui/icons-material";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import BlogsCard from "../Components/BlogsCard";
-import BlogsList from "../Components/BlogsList";
+import BlogsListItems from "../Components/BlogsListItems";
 import Hero from "../Components/Hero";
 import Search from "../Components/Search";
+import Topics from "../Components/Topics";
+import { DataAuth } from "../context/DataProvider";
 import heroImg from "../media/news.jpg";
 
 const Listed = () => {
@@ -16,22 +18,10 @@ const Listed = () => {
     description:
       "Stay up to date with the latest news and developments in the world of energy.",
   };
-  const [data, setData] = useState([]);
   const [visibleData, setVisibleData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
-  const [topic, setTopic] = useState("");
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://newsapi.org/v2/everything?q=norway+${topic}&sortBy=publishedAt&apiKey=${process.env.REACT_APP_api_KEY}`
-      )
-      .then((response) => {
-        setData(response.data.articles);
-      });
-  }, [topic]);
-  console.log(data);
+  const { data, setHeadline, topstories } = DataAuth();
 
   useEffect(() => {
     setVisibleData(
@@ -50,14 +40,16 @@ const Listed = () => {
   return (
     <Box>
       <Hero data={heroData} />
-      <Search searchTopic={(text) => setTopic(text)} />
-      <Box sx={{ display: "flex", paddingX: 7, paddingY: 5 }}>
+      <Search searchTopic={(text) => setHeadline(text)} />
+      <Topics />
+      <Box sx={{ display: "flex", paddingLeft: 7, paddingY: 5 }}>
         <Container sx={{ margin: 0, padding: 0 }}>
           <Grid container rowSpacing={3} columnSpacing={4}>
             {visibleData &&
               visibleData.map((item, index) => (
                 <Grid item xs="auto" key={index}>
-                  <BlogsCard key={item.id} data={item} />
+                  {item.urlToImage && item.author && <BlogsCard data={item} />}
+                  {/* <BlogsCard key={item.id} data={item} /> */}
                 </Grid>
               ))}
           </Grid>
@@ -94,7 +86,28 @@ const Listed = () => {
             </Button>
           </Box>
         </Container>
-        <BlogsList />
+        <Box>
+          <Button
+            sx={{ fontSize: "1.5rem" }}
+            startIcon={<ElectricBolt sx={{ color: "red" }} />}
+            size="large"
+          >
+            Top Headlines
+          </Button>
+          <Box
+            sx={{
+              width: "250px",
+              height: "600px",
+              overflowY: "scroll",
+              "&::-webkit-scrollbar": { display: "none" },
+              boxShadow: 'gray 2px 2px 2px 2px',
+            }}
+          >
+            {topstories.map((item, index) => (
+              <BlogsListItems key={index} data={item} />
+            ))}
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

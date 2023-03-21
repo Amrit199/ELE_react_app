@@ -1,13 +1,13 @@
-import { List} from "@mui/material";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { List } from "@mui/material";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BlogsListItems from "./BlogsListItems";
-
+import { DataAuth } from "../context/DataProvider";
 
 const useStyles = makeStyles((theme) => ({
   blogsListContainer: {
-    width: 350,
+    margin: 0,
+    // maxWidth: 350,
     height: 500,
     overflowY: "scroll",
     overflowX: "hidden",
@@ -24,33 +24,12 @@ const useStyles = makeStyles((theme) => ({
 
 const BlogsList = () => {
   const classes = useStyles();
-  const [data, setData] = useState([]);
-  
-  useEffect(() => {
-    axios
-      .get(
-        `https://newsapi.org/v2/everything?q=electricity&sortBy=publishedAt&apiKey=${process.env.REACT_APP_api_KEY}`
-      )
-      .then((response) => {
-        setData(response.data.articles);
-      });
-  }, []);
-  console.log(data);
+  const { topstories } = DataAuth()
+  console.log(topstories)
   return (
     <List className={classes.blogsListContainer}>
-      {data.map((item) => (
-        <BlogsListItems data={item}/>
-        // <ListItem
-        //   className={classes.listItem}
-        //   key={item.title}
-        //   onClick={handleClick}
-        // >
-        //   <ListItemText
-        //     primary={item.author}
-        //     secondary={item.title}
-        //     secondaryTypographyProps
-        //   />
-        // </ListItem>
+      {topstories.map((item, index) => (
+        <BlogsListItems key={index} data={item} />
       ))}
     </List>
   );

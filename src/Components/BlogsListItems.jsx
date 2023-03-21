@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
     listItem: {
       "&:hover": {
         backgroundColor: theme.palette.action.hover,
+        textDecoration: 'underline',
       },
       cursor: "pointer",
     },
@@ -29,8 +30,7 @@ const BlogsListItems = ({ data }) => {
       onClick={handleClick}
     >
       <ListItemText
-        primary={data.author}
-        secondary={data.title}
+        primary={data.title}
       />
     </ListItem>
   );
