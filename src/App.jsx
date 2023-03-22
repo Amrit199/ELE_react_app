@@ -8,6 +8,7 @@ import Listed from "./pages/Listed";
 import Services from "./pages/Services";
 import { DataContextProvider } from "./context/DataProvider";
 import News from "./pages/News";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/listed/:listedText/" element={<News />}/>
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </DataContextProvider>

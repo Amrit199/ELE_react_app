@@ -22,8 +22,16 @@ import {
 import { useState } from "react";
 import { QuestionAnswer } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  link: {
+    textDecoration: "none",
+  }
+}))
 
 export const Navbar = () => {
+  const classes = useStyles()
   const [mobileMenu, setMobileMenu] = useState({
     left: false,
   });
@@ -59,7 +67,7 @@ export const Navbar = () => {
             icon: <MiscellaneousServicesIcon />,
             path: "/services",
           },
-          { text: "Blogs", icon: <ListAltIcon />, path: "/listed" },
+          { text: "News", icon: <ListAltIcon />, path: "/listed" },
           { text: "FAQ", icon: <QuestionAnswer />, path: "/faq" },
           { text: "Contact", icon: <ContactsIcon />, path: "/contact" },
         ].map((item) => (
@@ -80,9 +88,8 @@ export const Navbar = () => {
   );
 
   const NavLink = styled(Typography)(({ theme }) => ({
-    fontSize: "14px",
+    fontSize: "1rem",
     color: "#4F5361",
-    textDecoration: "",
     fontWeight: "bold",
     cursor: "pointer",
     "&:hover": {
@@ -145,26 +152,28 @@ export const Navbar = () => {
           >
             {list("left")}
           </Drawer>
-          <NavbarLogo src={logoImg} alt="logo" />
+          <Link to={"/"}>
+            <NavbarLogo src={logoImg} alt="logo"/>
+          </Link>
         </Box>
 
         <NavbarLinksBox>
-          <Link to={"/"}>
+          <Link to={"/"} className={classes.link}>
             <NavLink>Home</NavLink>
           </Link>
-          <Link to={"/features"}>
+          <Link to={"/features"} className={classes.link}>
             <NavLink variant="body2">Compare Plans</NavLink>
           </Link>
-          <Link to={"/services"}>
+          <Link to={"/services"} className={classes.link}>
             <NavLink variant="body2">Energy Usage</NavLink>
           </Link>
-          <Link to={"/faq"}>
+          <Link to={"/faq"} className={classes.link}>
             <NavLink variant="body2">FAQ</NavLink>
           </Link>
-          <Link to={"/listed"}>
-            <NavLink variant="body2">Blogs</NavLink>
+          <Link to={"/listed"} className={classes.link}>
+            <NavLink variant="body2">News</NavLink>
           </Link>
-          <Link to={"/contact"}>
+          <Link to={"/contact"} className={classes.link}>
             <NavLink variant="body2">Contact</NavLink>
           </Link>
         </NavbarLinksBox>
@@ -178,7 +187,9 @@ export const Navbar = () => {
           gap: "1rem",
         }}
       >
-        <NavLink variant="body2">Sign Up</NavLink>
+        <Link to={"/login"}>
+          <NavLink variant="body2">Log In</NavLink>
+        </Link>
         <CustomButton
           backgroundColor="#0F1B4C"
           color="#fff"
