@@ -52,7 +52,7 @@ const Login = () => {
         <Grid
           item
           xs={false}
-          sm={4}
+          sm={false}
           md={7}
           sx={{
             backgroundImage: `url(${background})`,
@@ -67,31 +67,46 @@ const Login = () => {
         >
           <Box
             sx={{
-              my: 8,
-              mx: 4,
+              //   my: 8,
+              //   mx: 4,
+              p: 5,
+              textAlign: 'center',
+              width: "100%",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
+              fontSize: '1.5rem',
+              color: 'white',
             }}
           >
-            <Typography component="h1" variant="h5" sx={{ mt: 10, mb: 2 }}>
+            <Typography component="h1" variant="h3">
               Find and Compare the current best prices of electricity
             </Typography>
             <List>
               <ListItem>
-                <ListItemIcon><CheckCircleOutline /></ListItemIcon>Compare the prices
+                <ListItemIcon>
+                  <CheckCircleOutline />
+                </ListItemIcon>
+                Compare the prices
               </ListItem>
               <ListItem>
-              <ListItemIcon><CheckCircleOutline /></ListItemIcon>Find the latest news
+                <ListItemIcon>
+                  <CheckCircleOutline />
+                </ListItemIcon>
+                Find the latest news
               </ListItem>
               <ListItem>
-              <ListItemIcon><CheckCircleOutline /></ListItemIcon>Save your income and spend less
+                <ListItemIcon>
+                  <CheckCircleOutline />
+                </ListItemIcon>
+                Save your income and spend less
               </ListItem>
             </List>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,
