@@ -16,6 +16,7 @@ import background from "../media/background.jpg";
 import { List, ListItem, ListItemIcon } from "@mui/material";
 import { CheckCircleOutline } from "@mui/icons-material";
 
+
 function Copyright(props) {
   return (
     <Typography
@@ -47,7 +48,7 @@ const Login = () => {
   };
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container component="main" sx={{ height: "100%" }}>
         <CssBaseline />
         <Grid
           item

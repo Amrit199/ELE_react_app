@@ -72,9 +72,8 @@ const Footer = () => {
               Contact Information
             </Typography>
 
-            <FooterLink sx={{mb:2}}>kontakt@stromprisidag.no</FooterLink>
+            <FooterLink sx={{mb:2}}>kontakt.no</FooterLink>
             <br />
-            <FooterLink>+47 48695361</FooterLink>
           </Box>
 
           <Box>
